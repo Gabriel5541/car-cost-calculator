@@ -3,163 +3,577 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate and compare the real annual cost of owning a car.">
-    <title>Car Cost Calculator</title>
+
+    <meta
+        name="description"
+        content="Calculate the real cost of owning your car."
+    >
+
+    <title>CarCost | Car Ownership Calculator</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header class="header">
-        <div class="container">
-            <a href="#" class="logo">CAR<span>COST</span></a>
-            <p class="tagline">Know what your car really costs.</p>
+<header class="site-header">
+    <div class="container nav">
+        <a href="#" class="brand">
+            CAR<span>COST</span>
+        </a>
+
+        <span class="nav-note">
+            Know what your car really costs.
+        </span>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            CAR OWNERSHIP CALCULATOR
         </div>
-    </header>
 
-    <main class="container">
+        <h1>
+            What does your car
+            <span>really</span>
+            cost?
+        </h1>
 
-        <section class="hero">
-            <h1>Car Cost Calculator</h1>
-            <p>Calculate how much your car actually costs you every year.</p>
-        </section>
+        <p>
+            Estimate your yearly, monthly and per-kilometre
+            ownership costs in seconds.
+        </p>
 
-        <section class="calculator-card">
+    </section>
 
-            <div class="form-section">
 
-                <h2>Your car</h2>
+    <section class="calculator-card">
 
-                <div class="input-group">
-                    <label for="carName">Car name</label>
-                    <input type="text" id="carName" placeholder="e.g. BMW M4">
+
+        <!-- LEFT SIDE -->
+
+        <div class="panel form-panel">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="step">01</span>
+                    <h2>Your car</h2>
                 </div>
 
-                <div class="input-row">
+                <span class="hint">
+                    Enter your costs
+                </span>
 
-                    <div class="input-group">
-                        <label for="carPrice">Car price (€)</label>
-                        <input type="number" id="carPrice" placeholder="80000" min="0">
-                    </div>
+            </div>
 
-                    <div class="input-group">
-                        <label for="fuelConsumption">Consumption (L/100 km)</label>
-                        <input type="number" id="fuelConsumption" placeholder="10" min="0" step="0.1">
+
+            <!-- CAR SEARCH -->
+
+            <div class="field autocomplete">
+
+                <label for="carName">
+                    Car name
+                </label>
+
+                <div class="input-wrap">
+
+                    <input
+                        id="carName"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="e.g. BMW M4"
+                    >
+
+                    <button
+                        id="clearCar"
+                        class="clear-btn"
+                        type="button"
+                        aria-label="Clear car name"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+                <div
+                    id="suggestions"
+                    class="suggestions"
+                    role="listbox"
+                ></div>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div class="field">
+
+                <label for="carPrice">
+                    Purchase price
+                    <span>€</span>
+                </label>
+
+                <input
+                    id="carPrice"
+                    type="number"
+                    min="0"
+                    step="100"
+                    placeholder="80,000"
+                >
+
+            </div>
+
+
+            <!-- CONSUMPTION / FUEL -->
+
+            <div class="grid-2">
+
+                <div class="field">
+
+                    <label for="fuelConsumption">
+                        Consumption
+                        <span>L/100 km</span>
+                    </label>
+
+                    <input
+                        id="fuelConsumption"
+                        type="number"
+                        min="0"
+                        step="0.1"
+                        placeholder="10.0"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="fuelPrice">
+                        Fuel price
+                        <span>€/L</span>
+                    </label>
+
+                    <input
+                        id="fuelPrice"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="1.80"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- KM -->
+
+            <div class="field">
+
+                <label for="kmPerYear">
+                    Distance driven
+                    <span>km/year</span>
+                </label>
+
+                <input
+                    id="kmPerYear"
+                    type="number"
+                    min="0"
+                    step="500"
+                    value="15000"
+                >
+
+            </div>
+
+
+            <!-- INSURANCE / MAINTENANCE -->
+
+            <div class="grid-2">
+
+                <div class="field">
+
+                    <label for="insurance">
+                        Insurance
+                        <span>€/year</span>
+                    </label>
+
+                    <input
+                        id="insurance"
+                        type="number"
+                        min="0"
+                        step="50"
+                        placeholder="1,200"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="maintenance">
+                        Maintenance
+                        <span>€/year</span>
+                    </label>
+
+                    <input
+                        id="maintenance"
+                        type="number"
+                        min="0"
+                        step="50"
+                        placeholder="1,000"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- OTHER -->
+
+            <div class="field">
+
+                <label for="otherCosts">
+                    Other costs
+                    <span>€/year</span>
+                </label>
+
+                <input
+                    id="otherCosts"
+                    type="number"
+                    min="0"
+                    step="50"
+                    placeholder="500"
+                >
+
+            </div>
+
+
+            <!-- ADVANCED -->
+
+            <div class="advanced">
+
+                <button
+                    id="advancedToggle"
+                    type="button"
+                    class="advanced-toggle"
+                >
+
+                    <span>
+                        ＋ Add depreciation
+                    </span>
+
+                    <span id="advancedArrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+
+                <div
+                    id="advancedContent"
+                    class="advanced-content hidden"
+                >
+
+                    <div class="field">
+
+                        <label for="depreciation">
+                            Estimated depreciation
+                            <span>€/year</span>
+                        </label>
+
+                        <input
+                            id="depreciation"
+                            type="number"
+                            min="0"
+                            step="100"
+                            placeholder="5,000"
+                        >
+
+                        <small>
+                            Leave at 0 if you only want running costs.
+                        </small>
+
                     </div>
 
                 </div>
 
-                <div class="input-row">
+            </div>
 
-                    <div class="input-group">
-                        <label for="fuelPrice">Fuel price (€/L)</label>
-                        <input type="number" id="fuelPrice" placeholder="1.80" min="0" step="0.01">
-                    </div>
 
-                    <div class="input-group">
-                        <label for="kmPerYear">Kilometers / year</label>
-                        <input type="number" id="kmPerYear" placeholder="15000" min="0">
-                    </div>
+            <!-- CALCULATE -->
+
+            <button
+                id="calculateBtn"
+                class="primary-btn"
+                type="button"
+            >
+
+                Calculate my cost
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="panel result-panel">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="step">
+                        02
+                    </span>
+
+                    <h2>
+                        Your estimate
+                    </h2>
 
                 </div>
 
-                <div class="input-row">
-
-                    <div class="input-group">
-                        <label for="insurance">Insurance / year (€)</label>
-                        <input type="number" id="insurance" placeholder="1500" min="0">
-                    </div>
-
-                    <div class="input-group">
-                        <label for="maintenance">Maintenance / year (€)</label>
-                        <input type="number" id="maintenance" placeholder="1000" min="0">
-                    </div>
-
-                </div>
-
-                <div class="input-group">
-                    <label for="otherCosts">Other costs / year (€)</label>
-                    <input type="number" id="otherCosts" placeholder="500" min="0">
-                </div>
-
-                <button id="calculateBtn" class="calculate-btn">
-                    Calculate cost
+                <button
+                    id="resetBtn"
+                    class="text-btn"
+                    type="button"
+                >
+                    Reset
                 </button>
 
             </div>
 
-            <div class="results-section">
 
-                <h2>Results</h2>
+            <!-- EMPTY -->
 
-                <div id="emptyState" class="empty-state">
-                    <div class="empty-icon">🚗</div>
-                    <p>Enter your car information to see the results.</p>
+            <div
+                id="emptyState"
+                class="empty-state"
+            >
+
+                <div class="car-icon">
+                    🚗
                 </div>
 
-                <div id="results" class="results hidden">
+                <h3>
+                    Your numbers will appear here
+                </h3>
 
-                    <div class="car-result-name" id="resultCarName">
-                        Your car
+                <p>
+                    Fill in the form and calculate
+                    your estimated ownership cost.
+                </p>
+
+            </div>
+
+
+            <!-- RESULTS -->
+
+            <div
+                id="results"
+                class="results hidden"
+            >
+
+                <div class="result-top">
+
+                    <div>
+
+                        <span class="muted">
+                            Estimated annual cost
+                        </span>
+
+                        <div
+                            id="resultCarName"
+                            class="result-name"
+                        >
+                            Your car
+                        </div>
+
                     </div>
 
-                    <div class="main-result">
-                        <span>Annual cost</span>
-                        <strong id="annualCost">€0</strong>
-                    </div>
+                    <strong id="annualCost">
+                        €0
+                    </strong>
 
-                    <div class="result-grid">
+                </div>
 
-                        <div class="result-box">
-                            <span>Monthly cost</span>
-                            <strong id="monthlyCost">€0</strong>
-                        </div>
 
-                        <div class="result-box">
-                            <span>Cost / km</span>
-                            <strong id="costPerKm">€0</strong>
-                        </div>
+                <!-- METRICS -->
 
-                        <div class="result-box">
-                            <span>Fuel / year</span>
-                            <strong id="fuelCost">€0</strong>
-                        </div>
+                <div class="metric-grid">
 
-                        <div class="result-box">
-                            <span>Fuel / month</span>
-                            <strong id="fuelMonthly">€0</strong>
-                        </div>
+                    <div class="metric">
+
+                        <span>
+                            Per month
+                        </span>
+
+                        <strong id="monthlyCost">
+                            €0
+                        </strong>
 
                     </div>
 
-                    <div class="breakdown">
 
-                        <h3>Annual breakdown</h3>
+                    <div class="metric">
 
-                        <div class="breakdown-row">
-                            <span>Fuel</span>
-                            <strong id="breakdownFuel">€0</strong>
-                        </div>
+                        <span>
+                            Per km
+                        </span>
 
-                        <div class="breakdown-row">
-                            <span>Insurance</span>
-                            <strong id="breakdownInsurance">€0</strong>
-                        </div>
+                        <strong id="costPerKm">
+                            €0.00
+                        </strong>
 
-                        <div class="breakdown-row">
-                            <span>Maintenance</span>
-                            <strong id="breakdownMaintenance">€0</strong>
-                        </div>
+                    </div>
 
-                        <div class="breakdown-row">
-                            <span>Other</span>
-                            <strong id="breakdownOther">€0</strong>
-                        </div>
 
-                        <div class="breakdown-row total">
-                            <span>Total</span>
-                            <strong id="breakdownTotal">€0</strong>
-                        </div>
+                    <div class="metric">
+
+                        <span>
+                            Fuel / year
+                        </span>
+
+                        <strong id="fuelCost">
+                            €0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric">
+
+                        <span>
+                            Fuel / month
+                        </span>
+
+                        <strong id="fuelMonthly">
+                            €0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BREAKDOWN -->
+
+                <div class="breakdown">
+
+                    <div class="breakdown-title">
+                        Annual breakdown
+                    </div>
+
+
+                    <div class="row">
+
+                        <span>
+                            Fuel
+                        </span>
+
+                        <strong id="breakdownFuel">
+                            €0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <span>
+                            Insurance
+                        </span>
+
+                        <strong id="breakdownInsurance">
+                            €0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <span>
+                            Maintenance
+                        </span>
+
+                        <strong id="breakdownMaintenance">
+                            €0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <span>
+                            Other
+                        </span>
+
+                        <strong id="breakdownOther">
+                            €0
+                        </strong>
+
+                    </div>
+
+
+                    <div
+                        id="depreciationRow"
+                        class="row hidden"
+                    >
+
+                        <span>
+                            Depreciation
+                        </span>
+
+                        <strong id="breakdownDepreciation">
+                            €0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="row total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="breakdownTotal">
+                            €0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INSIGHT -->
+
+                <div class="insight">
+
+                    <span>
+                        ●
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Quick insight
+                        </strong>
+
+                        <p id="insightText">
+                        </p>
 
                     </div>
 
@@ -167,35 +581,89 @@
 
             </div>
 
-        </section>
-
-        <section class="info-section">
-
-            <h2>How is the cost calculated?</h2>
-
-            <p>
-                Fuel cost is calculated from your annual mileage,
-                fuel consumption and fuel price. Insurance, maintenance
-                and other yearly expenses are then added to estimate
-                your total annual ownership cost.
-            </p>
-
-            <p class="note">
-                This calculator does not include depreciation, financing,
-                taxes or unexpected repairs.
-            </p>
-
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 CarCost. Built for car enthusiasts.</p>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+    </section>
+
+
+
+    <!-- INFO -->
+
+    <section class="how-it-works">
+
+        <h2>
+            How we calculate it
+        </h2>
+
+
+        <div class="formula-grid">
+
+            <div>
+
+                <b>
+                    Fuel
+                </b>
+
+                <span>
+                    (km ÷ 100) × consumption × fuel price
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <b>
+                    Running cost
+                </b>
+
+                <span>
+                    Fuel + insurance + maintenance + other
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <b>
+                    Total ownership
+                </b>
+
+                <span>
+                    Running cost + optional depreciation
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <p class="disclaimer">
+
+            This is an estimate. It does not automatically
+            include financing, taxes, parking, tolls or
+            unexpected repairs.
+
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        CARCOST · Built for car enthusiasts
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
