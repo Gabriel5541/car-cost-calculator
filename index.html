@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate and compare the real annual cost of owning a car.">
+    <title>Car Cost Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">CAR<span>COST</span></a>
+            <p class="tagline">Know what your car really costs.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <h1>Car Cost Calculator</h1>
+            <p>Calculate how much your car actually costs you every year.</p>
+        </section>
+
+        <section class="calculator-card">
+
+            <div class="form-section">
+
+                <h2>Your car</h2>
+
+                <div class="input-group">
+                    <label for="carName">Car name</label>
+                    <input type="text" id="carName" placeholder="e.g. BMW M4">
+                </div>
+
+                <div class="input-row">
+
+                    <div class="input-group">
+                        <label for="carPrice">Car price (€)</label>
+                        <input type="number" id="carPrice" placeholder="80000" min="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="fuelConsumption">Consumption (L/100 km)</label>
+                        <input type="number" id="fuelConsumption" placeholder="10" min="0" step="0.1">
+                    </div>
+
+                </div>
+
+                <div class="input-row">
+
+                    <div class="input-group">
+                        <label for="fuelPrice">Fuel price (€/L)</label>
+                        <input type="number" id="fuelPrice" placeholder="1.80" min="0" step="0.01">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="kmPerYear">Kilometers / year</label>
+                        <input type="number" id="kmPerYear" placeholder="15000" min="0">
+                    </div>
+
+                </div>
+
+                <div class="input-row">
+
+                    <div class="input-group">
+                        <label for="insurance">Insurance / year (€)</label>
+                        <input type="number" id="insurance" placeholder="1500" min="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="maintenance">Maintenance / year (€)</label>
+                        <input type="number" id="maintenance" placeholder="1000" min="0">
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+                    <label for="otherCosts">Other costs / year (€)</label>
+                    <input type="number" id="otherCosts" placeholder="500" min="0">
+                </div>
+
+                <button id="calculateBtn" class="calculate-btn">
+                    Calculate cost
+                </button>
+
+            </div>
+
+            <div class="results-section">
+
+                <h2>Results</h2>
+
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-icon">🚗</div>
+                    <p>Enter your car information to see the results.</p>
+                </div>
+
+                <div id="results" class="results hidden">
+
+                    <div class="car-result-name" id="resultCarName">
+                        Your car
+                    </div>
+
+                    <div class="main-result">
+                        <span>Annual cost</span>
+                        <strong id="annualCost">€0</strong>
+                    </div>
+
+                    <div class="result-grid">
+
+                        <div class="result-box">
+                            <span>Monthly cost</span>
+                            <strong id="monthlyCost">€0</strong>
+                        </div>
+
+                        <div class="result-box">
+                            <span>Cost / km</span>
+                            <strong id="costPerKm">€0</strong>
+                        </div>
+
+                        <div class="result-box">
+                            <span>Fuel / year</span>
+                            <strong id="fuelCost">€0</strong>
+                        </div>
+
+                        <div class="result-box">
+                            <span>Fuel / month</span>
+                            <strong id="fuelMonthly">€0</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="breakdown">
+
+                        <h3>Annual breakdown</h3>
+
+                        <div class="breakdown-row">
+                            <span>Fuel</span>
+                            <strong id="breakdownFuel">€0</strong>
+                        </div>
+
+                        <div class="breakdown-row">
+                            <span>Insurance</span>
+                            <strong id="breakdownInsurance">€0</strong>
+                        </div>
+
+                        <div class="breakdown-row">
+                            <span>Maintenance</span>
+                            <strong id="breakdownMaintenance">€0</strong>
+                        </div>
+
+                        <div class="breakdown-row">
+                            <span>Other</span>
+                            <strong id="breakdownOther">€0</strong>
+                        </div>
+
+                        <div class="breakdown-row total">
+                            <span>Total</span>
+                            <strong id="breakdownTotal">€0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="info-section">
+
+            <h2>How is the cost calculated?</h2>
+
+            <p>
+                Fuel cost is calculated from your annual mileage,
+                fuel consumption and fuel price. Insurance, maintenance
+                and other yearly expenses are then added to estimate
+                your total annual ownership cost.
+            </p>
+
+            <p class="note">
+                This calculator does not include depreciation, financing,
+                taxes or unexpected repairs.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 CarCost. Built for car enthusiasts.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
